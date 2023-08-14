@@ -3,25 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css" class="style">
     <title>Document</title>
 </head>
 <body>
-    <form method="post">
-        <div class="forms">
-            <label for="name">Name of the Book</label>
-            <input type="text" id="name" required>
-            
-            <label for="author">Name of the Author</label>
-            <input type="text" id="author" required>
 
-            <label for="pages">Number of Pages</label>
-            <input type="number" id="pages" required>
 
-            <label for="read_or_not">Have you read the book already</label>
-            <input type="checkbox" value="value_checks">
-        </div>
+    
+    <div class="container">
+        <button id="addBookButton">+</button>
+        <form method="post" style="display:none">
+            <div class="forms">
+                <label for="name">Name of the Book</label>
+                <input type="text" id="name" required>
+                
+                <label for="author">Name of the Author</label>
+                <input type="text" id="author" required>
 
-        <button type="submit" class="create_a_book_card">Add</button>
+                <label for="pages">Number of Pages</label>
+                <input type="number" id="pages" required>
+
+                <div class="checkBoxContainer">
+                    <label for="read_or_not">Have you read the book already</label>
+                    <input type="checkbox" id="read_or_not" value="value_checks">
+                </div>
+                <button type="submit" class="   ">Add</button>
+            </div>
+    </div> 
+
+        
 
     </form>
     <script src="library.js"></script>
