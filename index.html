@@ -7,12 +7,8 @@
     <title>Document</title>
 </head>
 <body>
-
-
-    
-    <div class="container">
-        <button id="addBookButton">+</button>
-        <form method="post" style="display:none">
+    <div class="formsContainer">
+        <form  id = "bookForm"  method="post" >
             <div class="forms">
                 <label for="name">Name of the Book</label>
                 <input type="text" id="name" required>
@@ -24,16 +20,31 @@
                 <input type="number" id="pages" required>
 
                 <div class="checkBoxContainer">
-                    <label for="read_or_not">Have you read the book already</label>
-                    <input type="checkbox" id="read_or_not" value="value_checks">
+                    <label for="read_or_not">Have you read the book</label>
+                    <input type="checkbox" id="read_or_not" >
                 </div>
-                <button type="submit" class="   ">Add</button>
+                <button type="submit" class="create_a_book_card">Add</button>
             </div>
+        </form>
+    </div>
+    
+    <div class="container">
+        <div class="grid">
+            <div class="header">Your Book Library</div>
+            <div class="menu"></div>
+            <div class="innerGrid">
+                <div class="card">
+                    <button id="addBookButton">+</button>
+                    <p class = "addCardText">Add New <br>Book</p>
+                </div>
+            </div>
+            
+        </div>
     </div> 
 
         
 
-    </form>
+    
     <script src="library.js"></script>
 </body>
 </html>

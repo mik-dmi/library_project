@@ -1,37 +1,78 @@
+/*-----------------------------------------Functions----------------------------------------*/
 function addBookToLibrary() {
     // do stuff here
   }
+  function resetScreen(){
+    formsInput.style.display = "none";   /*hides the forms*/
+    showFormsButton.style.display = "block";  /*show the + button again"*/
+    formsDisplay.style.display = "none";
+    formsInput.reset();  /*clear the form for the next time*/
 
-  function Book() {
-
-    
   }
+  function Book(name, writer, pag, read) {
+    this.nameOfBook = name;
+    this.nameOfAuthor = writer;
+    this.numberOfPages =  pag;
+    this.readBoolean = read; 
+  }
+  /*-----------------------------------------Functions----------------------------------------*/
+  /*------------ Make a prototype for book to make the book cards on the DOM --------------------*/
+  Book.prototype.createBookCard = function(){
+    const paragraph = [];
+    const cardContainer = document.createElement("div");
 
-  
+    const labelForToggleSwitch = document.createElement("label"); /*lable for the Toggle*/
+    labelForToggleSwitch.class = "switch";
+    
+    const readToggleSwitch = document.createElement("input");   /*The Toggle*/
+    readToggleSwitch.type = "checkbox"; 
+
+    const spanForReadToggle = document.createElement("span");
+    spanForReadToggle.class = "slider_round"
+
+    labelForToggleSwitch.appendChild(readToggleSwitch)
+    labelForToggleSwitch.appendChild(spanForReadToggle);
+
+    for (let i = 1; i < 4; i++) {
+      paragraph[i] = document.createElement("p");
+      cardContainer.appendChild(paragraph[i]);
+    }
+    cardContainer. appendChild(labelForToggleSwitch);
+    paragraph[1].textContent = this.nameOfBook;
+    paragraph[2].textContent = this.nameOfAuthor;
+    paragraph[3].textContent = this.numberOfPages;
+    readToggleSwitch.checked = this.readBoolean;
+    cardContainer.class = "card";
+    
+    return cardContainer;
+  }
+  /*---------------------------------------------------------------------------------------------*/
+
+
+  const mainContainer = document.querySelector(".container"); 
+  const showFormsButton = document.getElementById("addBookButton");
+  const formsInput = document.getElementById("bookForm");
+  const formsDisplay = document.querySelector('.formsContainer');
+  const nameOfBook = formsInput["name"];
+  const author = formsInput["author"];
+  const pages = formsInput["pages"];
+  const check = formsInput["read_or_not"];
   
   let myLibrary = [];
 
-  const showFormsButton = document.getElementById("addBookButton");
-  const forms = document.querySelector("form");
-  const nameOfBook = forms["name"];
-  const author = forms["author"];
-  const pages = forms["pages"];
-  const check = forms["read_or_not"]
-  const addBookButton = document.getElementById('.create_a_book_card');
-
   showFormsButton.addEventListener("click", ()=>{
-  forms.style.display = "flex";
-  showFormsButton.style.display = "none"; 
-  })
+    
+    formsDisplay.style.display = "flex";
+  });
 
-  forms.addEventListener("submit", (e)=>{
+  formsInput.addEventListener("submit", (e)=>{
     e.preventDefault();
-    const book = new Book()
-    forms.style.display = "none";   /*hides the forms*/
-    showFormsButton.style.display = "block";  /*show the + button again"*/
-
-    forms.reset();  /*clear the form for the next time*/
-  }
-  
-  )
+    const bookObject = new Book(nameOfBook.value, author.value, pages.value, check.checked );
+    console.log(bookObject);
+    const card = bookObject.createBookCard();
+    console.log(card)
+    console.log(mainContainer)
+    mainContainer.appendChild(card) ;
+    resetScreen(); 
+  });
 
