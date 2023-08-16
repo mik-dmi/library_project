@@ -3,7 +3,7 @@ function addBookToLibrary() {
     // do stuff here
   }
   function resetScreen(){
-    formsInput.style.display = "none";   /*hides the forms*/
+    
     showFormsButton.style.display = "block";  /*show the + button again"*/
     formsDisplay.style.display = "none";
     formsInput.reset();  /*clear the form for the next time*/
@@ -61,8 +61,8 @@ function addBookToLibrary() {
   let myLibrary = [];
 
   showFormsButton.addEventListener("click", ()=>{
-    
     formsDisplay.style.display = "flex";
+
   });
 
   formsInput.addEventListener("submit", (e)=>{
