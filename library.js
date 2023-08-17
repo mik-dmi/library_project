@@ -3,7 +3,6 @@ function addBookToLibrary() {
     // do stuff here
   }
   function resetScreen(){
-    
     showFormsButton.style.display = "block";  /*show the + button again"*/
     formsDisplay.style.display = "none";
     formsInput.reset();  /*clear the form for the next time*/
@@ -37,19 +36,22 @@ function addBookToLibrary() {
       paragraph[i] = document.createElement("p");
       cardContainer.appendChild(paragraph[i]);
     }
-    cardContainer. appendChild(labelForToggleSwitch);
+    cardContainer.appendChild(labelForToggleSwitch);
     paragraph[1].textContent = this.nameOfBook;
     paragraph[2].textContent = this.nameOfAuthor;
     paragraph[3].textContent = this.numberOfPages;
     readToggleSwitch.checked = this.readBoolean;
-    cardContainer.class = "card";
+    cardContainer.classList.add("card");
+    
+    
     
     return cardContainer;
   }
   /*---------------------------------------------------------------------------------------------*/
 
 
-  const mainContainer = document.querySelector(".container"); 
+  const mainContainer = document.querySelector(".container");
+  const cardGrid = document.querySelector(".innerGrid");
   const showFormsButton = document.getElementById("addBookButton");
   const formsInput = document.getElementById("bookForm");
   const formsDisplay = document.querySelector('.formsContainer');
@@ -72,7 +74,7 @@ function addBookToLibrary() {
     const card = bookObject.createBookCard();
     console.log(card)
     console.log(mainContainer)
-    mainContainer.appendChild(card) ;
+    cardGrid.appendChild(card) ;
     resetScreen(); 
   });
 
