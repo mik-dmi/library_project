@@ -1,3 +1,7 @@
+@font-face {
+    font-family: myFont;
+    src: url(DelagioScript.otf);
+}
 html, body{
     margin: 0px;
     height:100vh;
@@ -81,9 +85,10 @@ input{
     display: flex;
     align-items: center;
     justify-content: center;
-    color:rgb(244, 235, 235);
-    font-size: 6rem;
-    font-weight: 700;
+    color:rgb(121, 197, 144);
+    font-size: 8rem;
+    font-weight: 500;
+    font-family: myFont;
 }
 
 .innerGrid{
@@ -95,14 +100,50 @@ input{
 
 }
 
-.card{
+.card, .card_with_content{
     height: 20rem;
     width: 15rem;
     margin: 2rem;
     border-radius: 1rem;
     background: #92bed8;
     border: 1px solid grey;
+    display: flex;
+    align-items:baseline;
+}
+.card_with_content{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1rem ;
+   
+      
 
+
+    
+}
+.userInput, .cardTitles {
+    display: flex;
+    justify-content: baseline;
+    margin:0;   
+    font-weight: 600;
+    
+}
+.cardTitles {
+    font-size: 1.2rem;
+    color: black;
+    padding-left: 0rem;
+    width: 100%;
+
+}
+
+.userInput{
+    font-size: 1.8rem;
+    color: white; 
+    padding-left: 1rem;
+    overflow-y: scroll;
+    height:4.5rem;
+    width: 90%;
+    
 }
 
 .card , #addBookButton{
@@ -111,7 +152,7 @@ input{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 1rem;
+   padding: 1rem; padding: 1rem;
 }
 
 .addCardText{
@@ -121,7 +162,6 @@ input{
 }
 
 .formsContainer{
-    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -132,4 +172,106 @@ input{
     align-items: center;
     
 }
+.toggle_container{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:1.4rem;
+}
 
+
+/*----------------------toggle botton------------------*/
+.switch {
+    position: relative;
+    display: flex;
+    align-self: center;
+    
+    margin-left: 0.2rem;
+    justify-content: center;
+    width: 5.4rem;
+    height: 2.2rem
+  }
+  
+  .switch input { 
+    opacity: 0;
+    position: absolute;
+    left: -900000px;
+    top:-90000000px
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #8a5757;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 2rem;
+    width: 2rem;
+    left: 0.1rem;
+    bottom: 0.1rem;
+    background-color: rgb(182, 36, 36);
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  
+  input:checked + .slider {
+    background-color: #7cb687;
+
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #459754;
+  }
+  
+  input:checked + .slider:before {
+    background-color: rgb(47, 154, 26);
+    -webkit-transform: translateX(5.2rem);
+    -ms-transform: translateX(5.2rem);
+    transform: translateX(3.2rem  );
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+    
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+
+  .card_with_content:has(input:checked) {
+    background-color: rgb(140, 226, 166);
+}
+.card_with_content:not(:has(input:checked)) {
+    background: rgb(201, 103, 103);
+
+}
+
+
+.removeButton{
+    border-radius: 50%;
+    width: 1.6rem;
+    height:1.8rem;
+    align-self: flex-end;
+    font-weight: 700;
+    border-color: rgb(0, 0, 0);
+    background-color: rgb(208, 40, 40);
+    border-width: 0.2rem;
+
+}
+
+  /*_-----------------------------------------------------------------------*/

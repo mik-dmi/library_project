@@ -20,30 +20,59 @@ function addBookToLibrary() {
     const paragraph = [];
     const cardContainer = document.createElement("div");
 
+    const removeButton = document.createElement("button");
+    removeButton.classList = "removeButton"
+    removeButton.textContent="X"
+
     const labelForToggleSwitch = document.createElement("label"); /*lable for the Toggle*/
-    labelForToggleSwitch.class = "switch";
+    labelForToggleSwitch.className  = "switch";
     
     const readToggleSwitch = document.createElement("input");   /*The Toggle*/
-    readToggleSwitch.type = "checkbox"; 
+    readToggleSwitch.type = "checkbox";
+    readToggleSwitch.checked =this.readBoolean;
 
     const spanForReadToggle = document.createElement("span");
-    spanForReadToggle.class = "slider_round"
+    spanForReadToggle.className  = "slider round";
 
-    labelForToggleSwitch.appendChild(readToggleSwitch)
+    const divForToggle =  document.createElement("div");
+    divForToggle.className  = "toggle_container";
+    
+    cardContainer.appendChild(removeButton);
+    labelForToggleSwitch.appendChild(readToggleSwitch);
     labelForToggleSwitch.appendChild(spanForReadToggle);
+    
 
-    for (let i = 1; i < 4; i++) {
+    for (let i = 1; i < 8; i++) {
       paragraph[i] = document.createElement("p");
       cardContainer.appendChild(paragraph[i]);
+      if( i%2 ===0){
+        paragraph[i].className = "userInput"
+      }else{
+        paragraph[i].className = "cardTitles"
+      }
     }
     cardContainer.appendChild(labelForToggleSwitch);
-    paragraph[1].textContent = this.nameOfBook;
-    paragraph[2].textContent = this.nameOfAuthor;
-    paragraph[3].textContent = this.numberOfPages;
-    readToggleSwitch.checked = this.readBoolean;
-    cardContainer.classList.add("card");
+    paragraph[1].textContent = "Name of the Book:";
+    paragraph[2].textContent =  this.nameOfBook;
+    paragraph[3].textContent = "Author:"
+    paragraph[4].textContent = this.nameOfAuthor;
+    paragraph[5].textContent = "Number of pages:" 
+    paragraph[6].textContent = this.numberOfPages;
+    paragraph[7].textContent = "Did you read the Book:";
+    cardContainer.classList.add("card_with_content");
     
+    cardContainer.appendChild(divForToggle);
+    divForToggle.appendChild(paragraph[7]);
+    divForToggle.appendChild(labelForToggleSwitch);
     
+    removeButton.addEventListener('click', function() {
+      // Get the parent element (the container) of the delete button
+      const itemContainer = this.parentElement;
+      
+      
+      // Remove the parent element from the DOM
+      itemContainer.remove();
+    });
     
     return cardContainer;
   }
@@ -59,7 +88,9 @@ function addBookToLibrary() {
   const author = formsInput["author"];
   const pages = formsInput["pages"];
   const check = formsInput["read_or_not"];
-  
+  const deleteButton = document.querySelector('.removeButton');
+
+
   let myLibrary = [];
 
   showFormsButton.addEventListener("click", ()=>{
@@ -74,7 +105,13 @@ function addBookToLibrary() {
     const card = bookObject.createBookCard();
     console.log(card)
     console.log(mainContainer)
-    cardGrid.appendChild(card) ;
+    cardGrid.appendChild(card);
+
     resetScreen(); 
   });
+
+  
+
+
+  
 
