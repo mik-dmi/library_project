@@ -1,5 +1,4 @@
-# library_project ( Live Demo: https://mik-dmi.github.io/library_project/ )
-# Library App
+# Library App ( Live Demo: https://mik-dmi.github.io/library_project/ )
 
 ## Project Overview
 
